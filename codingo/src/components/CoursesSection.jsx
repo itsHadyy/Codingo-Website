@@ -1,6 +1,61 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const CoursesSection = () => {
+    const courseRefs = useRef([]);
+    const [coursesVisible, setCoursesVisible] = useState({});
+
+    const learnSectionRef = useRef(null);
+    const [learnSectionVisible, setLearnSectionVisible] = useState(false);
+
+    useEffect(() => {
+        const observerOptions = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.1,
+        };
+
+        const courseObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setCoursesVisible(prev => ({
+                        ...prev,
+                        [entry.target.dataset.index]: true
+                    }));
+                    courseObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        courseRefs.current.forEach((ref, index) => {
+            if (ref) {
+                ref.dataset.index = index;
+                courseObserver.observe(ref);
+            }
+        });
+
+        const learnSectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setLearnSectionVisible(true);
+                    learnSectionObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        if (learnSectionRef.current) {
+            learnSectionObserver.observe(learnSectionRef.current);
+        }
+
+        return () => {
+            courseRefs.current.forEach(ref => {
+                if (ref) courseObserver.unobserve(ref);
+            });
+            if (learnSectionRef.current) {
+                learnSectionObserver.unobserve(learnSectionRef.current);
+            }
+        };
+    }, []);
+
     return (
         <section className="py-16 bg-white text-gray-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -12,8 +67,10 @@ const CoursesSection = () => {
 
                 <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {/* Course Card 1: Scratch Programming */}
-                    <div className="rounded-2xl p-6 shadow-lg text-left bg-gradient-to-br from-orange-300 to-yellow-300">
-                        <div className="flex items-center justify-center w-16 h-16 bg-white rounded-full mb-4">
+                    <div
+                        ref={el => courseRefs.current[0] = el}
+                        className={`rounded-2xl p-6 shadow-lg text-left bg-gradient-to-br from-orange-300 to-yellow-300 transform transition-all duration-300 hover:scale-105 hover:shadow-xl ${coursesVisible[0] ? 'animate-slideUp' : 'opacity-0'}`}>
+                        <div className="flex items-center justify-center w-16 h-16 bg-white rounded-full mb-4 text-4xl">
                             🎨
                         </div>
                         <h3 className="text-xl font-bold text-gray-800">Scratch Programming</h3>
@@ -31,8 +88,10 @@ const CoursesSection = () => {
                     </div>
 
                     {/* Course Card 2: Python Foundations */}
-                    <div className="rounded-2xl p-6 shadow-lg text-left bg-gradient-to-br from-indigo-400 to-blue-400">
-                        <div className="flex items-center justify-center w-16 h-16 bg-white rounded-full mb-4">
+                    <div
+                        ref={el => courseRefs.current[1] = el}
+                        className={`rounded-2xl p-6 shadow-lg text-left bg-gradient-to-br from-indigo-400 to-blue-400 transform transition-all duration-300 hover:scale-105 hover:shadow-xl ${coursesVisible[1] ? 'animate-slideUp' : 'opacity-0'}`}>
+                        <div className="flex items-center justify-center w-16 h-16 bg-white rounded-full mb-4 text-4xl">
                             🐍
                         </div>
                         <h3 className="text-xl font-bold text-white">Python Foundations</h3>
@@ -50,8 +109,10 @@ const CoursesSection = () => {
                     </div>
 
                     {/* Course Card 3: Web Development */}
-                    <div className="rounded-2xl p-6 shadow-lg text-left bg-gradient-to-br from-green-300 to-teal-300">
-                        <div className="flex items-center justify-center w-16 h-16 bg-white rounded-full mb-4">
+                    <div
+                        ref={el => courseRefs.current[2] = el}
+                        className={`rounded-2xl p-6 shadow-lg text-left bg-gradient-to-br from-green-300 to-teal-300 transform transition-all duration-300 hover:scale-105 hover:shadow-xl ${coursesVisible[2] ? 'animate-slideUp' : 'opacity-0'}`}>
+                        <div className="flex items-center justify-center w-16 h-16 bg-white rounded-full mb-4 text-4xl">
                             🌐
                         </div>
                         <h3 className="text-xl font-bold text-white">Web Development</h3>
@@ -69,8 +130,10 @@ const CoursesSection = () => {
                     </div>
 
                     {/* Course Card 4: Game Development */}
-                    <div className="rounded-2xl p-6 shadow-lg text-left bg-gradient-to-br from-purple-400 to-pink-400">
-                        <div className="flex items-center justify-center w-16 h-16 bg-white rounded-full mb-4">
+                    <div
+                        ref={el => courseRefs.current[3] = el}
+                        className={`rounded-2xl p-6 shadow-lg text-left bg-gradient-to-br from-purple-400 to-pink-400 transform transition-all duration-300 hover:scale-105 hover:shadow-xl ${coursesVisible[3] ? 'animate-slideUp' : 'opacity-0'}`}>
+                        <div className="flex items-center justify-center w-16 h-16 bg-white rounded-full mb-4 text-4xl">
                             🎮
                         </div>
                         <h3 className="text-xl font-bold text-white">Game Development</h3>
@@ -89,23 +152,25 @@ const CoursesSection = () => {
                 </div>
 
                 {/* What Your Child Will Learn Section */}
-                <div className="mt-20">
+                <div
+                    ref={learnSectionRef}
+                    className={`mt-20 ${learnSectionVisible ? 'animate-slideUp' : 'opacity-0'}`}>
                     <h2 className="text-3xl font-bold text-gray-700">What Your Child Will Learn</h2>
                     <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-8">
                         <div className="flex flex-col items-center text-center">
-                            <span className="child-learn font-large">🧠</span>
+                            <span className="child-learn text-4xl">🧠</span>
                             <p className="text-lg font-medium text-gray-700">Problem Solving</p>
                         </div>
                         <div className="flex flex-col items-center text-center">
-                            <span className="child-learn font-large">🎯</span>
+                            <span className="child-learn text-4xl">🎯</span>
                             <p className="text-lg font-medium text-gray-700">Logical Thinking</p>
                         </div>
                         <div className="flex flex-col items-center text-center">
-                            <span className="child-learn font-large">🤝</span>
+                            <span className="child-learn text-4xl">🤝</span>
                             <p className="text-lg font-medium text-gray-700">Collaboration</p>
                         </div>
                         <div className="flex flex-col items-center text-center">
-                            <span className="child-learn font-large">💡</span>
+                            <span className="child-learn text-4xl">💡</span>
                             <p className="text-lg font-medium text-gray-700">Creativity</p>
                         </div>
                     </div>
