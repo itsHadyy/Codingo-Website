@@ -8,6 +8,7 @@ import TestimonialsSection from './components/TestimonialsSection';
 import VisionMissionValues from './components/VisionMissionValues';
 import PricingSection from './components/PricingSection';
 import ContactEnrollmentSection from './components/ContactEnrollmentSection';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <VisionMissionValues />
       <PricingSection />
       <ContactEnrollmentSection />
+      <Footer />
     </div>
   );
 }

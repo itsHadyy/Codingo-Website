@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const TestimonialsSection = () => {
     const testimonials = [
@@ -47,18 +47,47 @@ const TestimonialsSection = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const slidesPerView = 3; 
 
+    const sectionRef = useRef(null);
+    const [sectionVisible, setSectionVisible] = useState(false);
+
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentSlide((prev) => (prev + 1) % Math.ceil(testimonials.length / slidesPerView));
         }, 5000); 
-        return () => clearInterval(interval);
+
+        const observerOptions = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.1,
+        };
+
+        const sectionObserver = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setSectionVisible(true);
+                    sectionObserver.disconnect();
+                }
+            },
+            observerOptions
+        );
+
+        if (sectionRef.current) {
+            sectionObserver.observe(sectionRef.current);
+        }
+
+        return () => {
+            clearInterval(interval);
+            if (sectionRef.current) {
+                sectionObserver.unobserve(sectionRef.current);
+            }
+        };
     }, [testimonials.length, slidesPerView]);
 
     return (
-        <section className="py-16 bg-gradient-to-b from-indigo-500 to-blue-500 text-white">
+        <section ref={sectionRef} id="feedbacks" className="py-16 bg-gradient-to-b from-indigo-500 to-blue-500 text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 className="text-5xl font-bold text-white">What Families Say</h2>
-                <p className="mt-4 text-xl max-w-2xl mx-auto text-white text-opacity-90">
+                <h2 className={`text-5xl font-bold text-white ${sectionVisible ? 'animate-slideUp' : 'opacity-0'}`}>What Families Say</h2>
+                <p className={`mt-4 text-xl max-w-2xl mx-auto text-white text-opacity-90 ${sectionVisible ? 'animate-slideUp delay-100' : 'opacity-0'}`}>
                     Hear from parents and students who have experienced the magic of learning to code
                     with Codingo.
                 </p>
@@ -69,8 +98,8 @@ const TestimonialsSection = () => {
                         style={{ transform: `translateX(-${currentSlide * (100 / slidesPerView)}%)` }}
                     >
                         {testimonials.map((testimonial, index) => (
-                            <div key={testimonial.id} className="flex-shrink-0 w-1/3 px-4">
-                                <div className="bg-white rounded-lg p-8 shadow-lg text-gray-800 text-left h-full">
+                            <div key={testimonial.id} className={`flex-shrink-0 w-1/3 px-4 ${sectionVisible ? `animate-zoomIn delay-${index * 100 + 200}` : 'opacity-0'}`}>
+                                <div className="bg-white rounded-lg p-8 shadow-lg text-gray-800 text-left h-full transform transition-all duration-300 hover:scale-103">
                                     <div className="flex items-center mb-4">
                                         <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center text-4xl mr-4">
                                             <span dangerouslySetInnerHTML={{ __html: testimonial.avatar }} />
@@ -96,7 +125,7 @@ const TestimonialsSection = () => {
                     {testimonials.map((_, index) => (
                         <button
                             key={index}
-                            className={`h-3 w-3 rounded-full ${index === currentSlide ? "bg-white" : "bg-gray-400"}
+                            className={`h-3 w-3 rounded-full transition-all duration-300 ${index === currentSlide ? "bg-white scale-125" : "bg-gray-400 hover:bg-lime-300 hover:scale-110"}
                             `}
                             onClick={() => setCurrentSlide(index)}
                         ></button>
