@@ -11,7 +11,7 @@ const HeroSection = () => {
             <FloatingCircle size="90px" top="40%" left="40%" opacity={0.07} delay="1.5s" reverse />
 
             {/* Content */}
-            <h1 className="text-11xl md:text-5xl sm:text-2xl font-bold border border-red-500">
+            <h1 className="text-11xl md:text-5xl sm:text-2xl font-bold">
   Empowering Kids <br />
   <span className="text-green-300">Through Code</span>
 </h1>
