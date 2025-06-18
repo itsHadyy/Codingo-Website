@@ -78,13 +78,13 @@ const CoursesSection = () => {
     return (
         <section ref={sectionRef} id="courses" className="py-16 bg-white text-gray-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 className={`text-5xl font-bold text-gray-700 ${sectionVisible ? 'animate-slideUp' : 'opacity-0'}`}>Our <span className="text-indigo-600">Courses</span></h2>
-                <p className={`mt-4 text-xl max-w-2xl mx-auto text-gray-600 ${sectionVisible ? 'animate-slideUp delay-100' : 'opacity-0'}`}>
+                <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold text-gray-700 ${sectionVisible ? 'animate-slideUp' : 'opacity-0'}`}>Our <span className="text-indigo-600">Courses</span></h2>
+                <p className={`mt-4 text-base sm:text-lg md:text-xl max-w-2xl mx-auto text-gray-600 ${sectionVisible ? 'animate-slideUp delay-100' : 'opacity-0'}`}>
                     Choose the perfect coding journey for your child. Our courses are designed to be fun,
                     engaging, and age-appropriate while building real programming skills.
                 </p>
 
-                <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     {/* Course Card 1: Scratch Programming */}
                     <div
                         ref={el => courseRefs.current[0] = el}
@@ -174,8 +174,8 @@ const CoursesSection = () => {
                 <div
                     ref={learnSectionRef}
                     className={`mt-20 ${learnSectionVisible ? 'animate-slideUp' : 'opacity-0'}`}>
-                    <h2 className={`text-3xl font-bold text-gray-700 ${learnSectionVisible ? 'animate-slideUp' : 'opacity-0'}`}>What Your Child Will Learn</h2>
-                    <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <h2 className={`text-2xl sm:text-3xl md:text-4xl font-bold text-gray-700 ${learnSectionVisible ? 'animate-slideUp' : 'opacity-0'}`}>What Your Child Will Learn</h2>
+                    <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
                         <div className={`flex flex-col items-center text-center transform transition-all duration-300 hover:scale-105 ${learnSectionVisible ? 'animate-zoomIn delay-100' : 'opacity-0'}`}>
                             <span className="child-learn text-4xl">🧠</span>
                             <p className="text-lg font-medium text-gray-700">Problem Solving</p>

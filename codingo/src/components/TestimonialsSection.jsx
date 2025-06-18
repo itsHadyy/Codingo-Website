@@ -27,7 +27,7 @@ const TestimonialsSection = () => {
             text: "\"I love coding at Codingo! I made a game where you catch falling stars and my friends want to play it all the time. Can't wait for the next class!\"",
         },
         {
-            id: 2,
+            id: 4,
             avatar: '&#127891;', 
             name: "Lisa Rodriguez",
             role: "Parent of Maya & Diego",
@@ -35,7 +35,7 @@ const TestimonialsSection = () => {
             text: "\"Both my kids are taking different courses at Codingo. The age-appropriate content and engaging teaching style keep them excited about learning.\"",
         },
         {
-            id: 3,
+            id: 5,
             avatar: '&#128103;',
             name: "Emma (12)",
             role: "Student",
@@ -45,7 +45,7 @@ const TestimonialsSection = () => {
     ];
 
     const [currentSlide, setCurrentSlide] = useState(0);
-    const slidesPerView = 3; 
+    const slidesPerView = 1;
 
     const sectionRef = useRef(null);
     const [sectionVisible, setSectionVisible] = useState(false);
@@ -98,7 +98,7 @@ const TestimonialsSection = () => {
                         style={{ transform: `translateX(-${currentSlide * (100 / slidesPerView)}%)` }}
                     >
                         {testimonials.map((testimonial, index) => (
-                            <div key={testimonial.id} className={`flex-shrink-0 w-1/3 px-4 ${sectionVisible ? `animate-zoomIn delay-${index * 100 + 200}` : 'opacity-0'}`}>
+                            <div key={testimonial.id} className={`flex-shrink-0 w-full px-4 ${sectionVisible ? `animate-zoomIn delay-${index * 100 + 200}` : 'opacity-0'}`}>
                                 <div className="bg-white rounded-lg p-8 shadow-lg text-gray-800 text-left h-full transform transition-all duration-300 hover:scale-103">
                                     <div className="flex items-center mb-4">
                                         <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center text-4xl mr-4">

@@ -37,21 +37,21 @@ const HeroSection = () => {
             <FloatingCircle size="90px" top="40%" left="40%" opacity={0.07} delay="1.5s" reverse />
 
             {/* Content */}
-            <h1 className={`text-5xl md:text-6xl lg:text-7xl font-bold ${isVisible ? 'animate-slideUp' : 'opacity-0'}`}>
+            <h1 className={`text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold ${isVisible ? 'animate-slideUp' : 'opacity-0'}`}>
   Empowering Kids <br />
   <span className="text-lime-300">Through Code</span>
 </h1>
-            <p className={`mt-4 text-xl max-w-xl ${isVisible ? 'animate-slideUp delay-100' : 'opacity-0'}`}>
+            <p className={`mt-4 text-base sm:text-lg md:text-xl max-w-xl ${isVisible ? 'animate-slideUp delay-100' : 'opacity-0'}`}>
                 Transform your child's curiosity into coding superpowers! Fun, interactive programming
                 courses designed for kids aged 8 - 16.
             </p>
-            <div className="mt-6 flex gap-4 justify-center">
-                <button className={`bg-lime-400 text-black font-semibold px-6 py-2 rounded-full shadow-lg hover:bg-lime-300 transition-all duration-300 transform hover:scale-105 ${isVisible ? 'animate-slideInLeft' : 'opacity-0'}`}>
+            <div className="mt-6 flex flex-col sm:flex-row gap-4 w-full max-w-md mx-auto justify-center items-center">
+                <button className={`w-full sm:w-auto bg-lime-400 text-black font-semibold px-6 py-2 rounded-full shadow-lg hover:bg-lime-300 transition-all duration-300 transform hover:scale-105 ${isVisible ? 'animate-slideInLeft' : 'opacity-0'}`}>
                     Join a Course
                 </button>
                 <input
                     type="text"
-                    className={`rounded-full px-4 py-2 text-black w-96 transition-all duration-300 transform hover:scale-105 ${isVisible ? 'animate-slideInRight delay-100' : 'opacity-0'}`}
+                    className={`w-full rounded-full px-4 py-2 text-black transition-all duration-300 transform hover:scale-105 ${isVisible ? 'animate-slideInRight delay-100' : 'opacity-0'}`}
                     placeholder="Enter email"
                 />
             </div>

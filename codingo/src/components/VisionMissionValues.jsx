@@ -57,7 +57,7 @@ const VisionMissionValues = () => {
                     <div className={`flex-1 rounded-2xl p-8 shadow-lg text-left bg-gradient-to-br from-indigo-500 to-blue-500 text-white transform transition-all duration-300 hover:scale-103 ${sectionVisible ? 'animate-slideInLeft' : 'opacity-0'}`}>
                         <div className="flex items-center mb-4">
                             <span className="text-5xl mr-4">🔮</span>
-                            <h2 className="text-4xl font-bold">Our Vision</h2>
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Our Vision</h2>
                         </div>
                         <p className="mt-4 text-lg text-white">
                             To become the leading platform that inspires and empowers the next generation of young innovators, making coding accessible, enjoyable, and meaningful for every child.
@@ -70,7 +70,7 @@ const VisionMissionValues = () => {
                     <div id="mission" className={`flex-1 rounded-2xl p-8 shadow-lg text-left bg-gradient-to-br from-green-400 to-teal-400 text-white transform transition-all duration-300 hover:scale-103 ${sectionVisible ? 'animate-slideInRight delay-100' : 'opacity-0'}`}>
                         <div className="flex items-center mb-4">
                             <span className="text-5xl mr-4">🎯</span> 
-                            <h2 className="text-4xl font-bold">Our Mission</h2>
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Our Mission</h2>
                         </div>
                         <p className="mt-4 text-lg text-white">
                             To provide high-quality, age-appropriate coding education that combines fun with learning, fostering creativity, problem-solving skills, and technological literacy in young minds.
@@ -94,8 +94,8 @@ const VisionMissionValues = () => {
 
                 {/* Our Core Values Section */}
                 <div ref={valuesRef} className="text-center mt-16">
-                    <h2 className={`text-4xl font-bold text-gray-700 ${valuesVisible ? 'animate-slideUp' : 'opacity-0'}`}>Our <span className="text-indigo-600">Core Values</span></h2>
-                    <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <h2 className={`text-2xl sm:text-3xl md:text-4xl font-bold text-gray-700 ${valuesVisible ? 'animate-slideUp' : 'opacity-0'}`}>Our <span className="text-indigo-600">Core Values</span></h2>
+                    <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         <div className={`rounded-2xl p-6 shadow-lg text-center bg-white transform transition-all duration-300 hover:scale-105 ${valuesVisible ? 'animate-zoomIn delay-100' : 'opacity-0'}`}>
                             <span className="text-5xl mb-4 block">🎨</span> 
                             <h3 className="text-xl font-bold text-gray-800">Creativity</h3>

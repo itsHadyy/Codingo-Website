@@ -38,16 +38,13 @@ module.exports = {
         bounceArrow: "bounceArrow 1.5s ease-in-out infinite",
       },
        fontSize: {
-             '10xl': '10rem',  // Example using rem
-             '11xl': '120px', // Example using pixels
+             '10xl': '10rem', 
+             '11xl': '120px',
            },
             screens: {
-        sm: '320px',   // small screens
-        md: '500px',   // medium screens
-        lg: '1024px',  // large screens
-        // You can also add xl or 2xl if needed
-        // xl: '1280px',
-        // '2xl': '1536px',
+        sm: '320px', 
+        md: '768px',  
+        lg: '1024px',  
       },
     },
   },

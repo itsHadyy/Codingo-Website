@@ -3,24 +3,24 @@ import React from "react";
 const Footer = () => {
     return (
         <footer className="bg-slate-900 text-white py-12">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 gap-8 md:grid-cols-4 text-left">
                 {/* Logo and Description */}
                 <div className="md:col-span-1 flex flex-col items-start">
-                    <div className="flex items-center mb-4">
+                    <div className="flex items-center mb-4 justify-start w-full">
                         <img src="codingo.jpeg" alt="Codingo Logo" className="h-12 w-12 mr-3 transform transition-transform duration-300 hover:scale-105" />
                         <span className="text-2xl font-bold">Codingo</span>
                     </div>
-                    <p className="text-gray-400 text-sm leading-relaxed">
+                    <p className="text-gray-400 text-sm leading-relaxed mb-4 md:mb-0">
                         Empowering the next generation through fun, interactive
                         coding education. We make programming accessible and
                         enjoyable for kids aged 8-16.
                     </p>
                     <div className="mt-4">
-                        <div className="flex items-center text-gray-300 hover:text-lime-300 transition-colors duration-300 mb-2">
+                        <div className="flex items-center justify-start text-gray-300 hover:text-lime-300 transition-colors duration-300 mb-2">
                             <span className="mr-2">✉️</span>
                             <span>hello@codingo.academy</span>
                         </div>
-                        <div className="flex items-center text-gray-300 hover:text-lime-300 transition-colors duration-300">
+                        <div className="flex items-center justify-start text-gray-300 hover:text-lime-300 transition-colors duration-300">
                             <span className="mr-2">📞</span>
                             <span>+1 (555) 123-CODE</span>
                         </div>
@@ -55,7 +55,7 @@ const Footer = () => {
                 {/* Follow Us */}
                 <div className="md:col-span-1">
                     <h3 className="text-xl font-semibold mb-4 text-lime-300">Follow Us</h3>
-                    <div className="flex space-x-4">
+                    <div className="flex justify-start space-x-4">
                         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="bg-gray-700 hover:bg-lime-500 transition-colors duration-300 text-white w-10 h-10 flex items-center justify-center rounded-full">
                             f
                         </a>
@@ -74,7 +74,7 @@ const Footer = () => {
 
             {/* Copyright and Policy Links */}
             <div className="mt-8 pt-8 border-t border-gray-700 text-center text-gray-500 text-sm">
-                <p>&copy; 2024 Codingo Academy. All rights reserved.</p>
+                <p>&copy; 2025 Codingo Academy. All rights reserved.</p>
                 <div className="mt-2 space-x-4">
                     <a href="#privacy" className="hover:text-white transition-colors duration-300">Privacy Policy</a>
                     <a href="#terms" className="hover:text-white transition-colors duration-300">Terms of Service</a>

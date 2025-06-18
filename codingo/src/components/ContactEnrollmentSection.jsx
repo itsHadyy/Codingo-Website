@@ -117,14 +117,14 @@ const ContactEnrollmentSection = () => {
     return (
         <section ref={sectionRef} id="contactus" className="py-16 bg-gradient-to-b from-indigo-500 to-blue-500 text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 className={`text-5xl font-bold text-white ${sectionVisible ? 'animate-slideUp' : 'opacity-0'}`}>Start Your Child's <span className="text-lime-300">Coding Journey</span></h2>
-                <p className={`mt-4 text-xl max-w-2xl mx-auto text-white text-opacity-90 ${sectionVisible ? 'animate-slideUp delay-100' : 'opacity-0'}`}>
+                <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold text-white ${sectionVisible ? 'animate-slideUp' : 'opacity-0'}`}>Start Your Child's <span className="text-lime-300">Coding Journey</span></h2>
+                <p className={`mt-4 text-base sm:text-lg md:text-xl max-w-2xl mx-auto text-white text-opacity-90 ${sectionVisible ? 'animate-slideUp delay-100' : 'opacity-0'}`}>
                     Ready to enroll? Fill out the form below and we'll get in touch to discuss the best
                     learning path for your child.
                 </p>
 
                 <div className="mt-12 flex flex-col lg:flex-row gap-8 items-start">
-                    <div ref={contactFormRef} className={`flex-1 bg-white rounded-lg shadow-lg p-8 text-left text-gray-800 transform transition-all duration-300 hover:scale-103 ${contactFormVisible ? 'animate-slideInLeft' : 'opacity-0'}`}>
+                    <div ref={contactFormRef} className={`w-full lg:w-1/2 bg-white rounded-lg shadow-lg p-8 text-left text-gray-800 transform transition-all duration-300 hover:scale-103 ${contactFormVisible ? 'animate-slideInLeft' : 'opacity-0'}`}>
                         <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
                         <div className="space-y-6">
                             <div className="flex items-center hover:translate-x-1 transition-transform duration-300">
@@ -169,7 +169,7 @@ const ContactEnrollmentSection = () => {
                         </div>
                     </div>
 
-                    <div ref={enrollmentFormRef} className={`flex-[2] bg-white rounded-lg shadow-lg p-8 text-left text-gray-800 transform transition-all duration-300 hover:scale-103 ${enrollmentFormVisible ? 'animate-slideInRight delay-100' : 'opacity-0'}`}>
+                    <div ref={enrollmentFormRef} className={`w-full lg:w-2/3 bg-white rounded-lg shadow-lg p-8 text-left text-gray-800 transform transition-all duration-300 hover:scale-103 ${enrollmentFormVisible ? 'animate-slideInRight delay-100' : 'opacity-0'}`}>
                         <h3 className="text-2xl font-bold mb-6">Enrollment Form</h3>
                         <form className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -195,7 +195,7 @@ const ContactEnrollmentSection = () => {
                                     </button>
                                 </div>
                                 {children.map((child, index) => (
-                                    <div key={index} className={`grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 relative ${childInfoVisible ? `animate-zoomIn delay-${index * 100 + 100}` : 'opacity-0'}`}>
+                                    <div key={index} className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4 relative ${childInfoVisible ? `animate-zoomIn delay-${index * 100 + 100}` : 'opacity-0'}`}>
                                         {index > 0 && (
                                             <button
                                                 type="button"
@@ -227,7 +227,7 @@ const ContactEnrollmentSection = () => {
 
                             <div ref={preferredCoursesRef} className="border-t border-gray-200 pt-6 mt-6">
                                 <h4 className={`text-lg font-bold text-gray-800 mb-4 ${preferredCoursesVisible ? 'animate-slideUp' : 'opacity-0'}`}>Preferred Courses (select all that interest you)</h4>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                     <div className={`flex items-center ${preferredCoursesVisible ? 'animate-zoomIn delay-100' : 'opacity-0'}`}>
                                         <input type="checkbox" id="scratch" name="courses" value="Scratch Programming" className="h-4 w-4 text-indigo-600 border-gray-300 rounded transform transition-transform duration-200 hover:scale-110" />
                                         <label htmlFor="scratch" className="ml-2 text-gray-700">Scratch Programming</label>
