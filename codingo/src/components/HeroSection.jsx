@@ -46,14 +46,24 @@ const HeroSection = () => {
                 courses designed for kids aged 8 - 16.
             </p>
             <div className="mt-6 flex flex-col sm:flex-row gap-4 w-full max-w-md mx-auto justify-center items-center">
-                <button className={`w-full sm:w-auto bg-lime-400 text-black font-semibold px-6 py-2 rounded-full shadow-lg hover:bg-lime-300 transition-all duration-300 transform hover:scale-105 ${isVisible ? 'animate-slideInLeft' : 'opacity-0'}`}>
+                <button
+                    className={`w-full sm:w-auto bg-lime-400 text-black font-semibold px-6 py-2 rounded-full shadow-lg hover:bg-lime-300 transition-all duration-300 transform hover:scale-105 ${isVisible ? 'animate-slideInLeft' : 'opacity-0'}`}
+                    onClick={() => {
+                        const el = document.getElementById('pricing');
+                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                >
                     Join a Course
                 </button>
-                <input
-                    type="text"
-                    className={`w-full rounded-full px-4 py-2 text-black transition-all duration-300 transform hover:scale-105 ${isVisible ? 'animate-slideInRight delay-100' : 'opacity-0'}`}
-                    placeholder="Enter email"
-                />
+                <button
+                    className={`w-full sm:w-auto bg-white text-indigo-600 hover:text-white font-semibold px-6 py-2 rounded-full shadow-lg hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105 ${isVisible ? 'animate-slideInRight delay-100' : 'opacity-0'}`}
+                    onClick={() => {
+                        const el = document.getElementById('contactus');
+                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                >
+                    Contact Us
+                </button>
             </div>
 
             {/* Stats Cards */}

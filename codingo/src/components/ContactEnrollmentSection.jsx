@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
+import { db } from '../firebase';
+import { collection, addDoc, Timestamp } from 'firebase/firestore';
 
 const ContactEnrollmentSection = () => {
     const [children, setChildren] = useState([{}]); 
+    const [submitting, setSubmitting] = useState(false);
+    const [success, setSuccess] = useState(false);
 
     const addChild = () => {
         setChildren([...children, {}]);
@@ -114,6 +118,34 @@ const ContactEnrollmentSection = () => {
         };
     }, []);
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setSubmitting(true);
+        setSuccess(false);
+        const form = e.target;
+        const parentName = form.parentName.value;
+        const emailAddress = form.emailAddress.value;
+        const phoneNumber = form.phoneNumber.value;
+        const childrenData = children;
+        const selectedCourses = Array.from(form.courses ? form.courses : []).filter(input => input.checked).map(input => input.value);
+        try {
+            await addDoc(collection(db, 'leads'), {
+                parentName,
+                emailAddress,
+                phoneNumber,
+                children: childrenData,
+                courses: selectedCourses,
+                createdAt: Timestamp.now(),
+            });
+            setSuccess(true);
+            form.reset();
+            setChildren([{}]);
+        } catch (err) {
+            alert('There was an error submitting your application. Please try again.');
+        }
+        setSubmitting(false);
+    };
+
     return (
         <section ref={sectionRef} id="contactus" className="py-16 bg-gradient-to-b from-indigo-500 to-blue-500 text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -171,7 +203,7 @@ const ContactEnrollmentSection = () => {
 
                     <div ref={enrollmentFormRef} className={`w-full lg:w-2/3 bg-white rounded-lg shadow-lg p-8 text-left text-gray-800 transform transition-all duration-300 hover:scale-103 ${enrollmentFormVisible ? 'animate-slideInRight delay-100' : 'opacity-0'}`}>
                         <h3 className="text-2xl font-bold mb-6">Enrollment Form</h3>
-                        <form className="space-y-6">
+                        <form className="space-y-6" onSubmit={handleSubmit}>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label htmlFor="parentName" className="block text-sm font-medium text-gray-700">Parent's Name <span className="text-red-500">*</span></label>
@@ -247,13 +279,29 @@ const ContactEnrollmentSection = () => {
                                 </div>
                             </div>
 
-                            <button type="submit" className="mt-8 bg-indigo-600 text-white font-semibold px-6 py-3 rounded-full shadow-md hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105 w-full flex items-center justify-center">
-                                Submit Application <span className="ml-2 text-xl">🚀</span>
+                            <button type="submit" className="mt-8 bg-indigo-600 text-white font-semibold px-6 py-3 rounded-full shadow-md hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105 w-full flex items-center justify-center" disabled={submitting}>
+                                {submitting ? 'Submitting...' : 'Submit Application'} <span className="ml-2 text-xl">🚀</span>
                             </button>
                         </form>
                     </div>
                 </div>
             </div>
+
+            {/* Popup Confirmation Modal */}
+            {success && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 animate-fadeIn">
+                    <div className="bg-lime-100 border-2 border-lime-400 rounded-2xl p-8 max-w-md w-full flex flex-col items-center relative shadow-2xl">
+                        <button onClick={() => setSuccess(false)} className="absolute top-3 right-3 text-2xl text-lime-700 hover:text-lime-900 focus:outline-none">&times;</button>
+                        <div className="text-5xl mb-2 animate-bounce">🎉</div>
+                        <div className="text-2xl font-bold text-lime-700 mb-2">Application Received!</div>
+                        <div className="text-lime-800 text-lg font-medium text-center">
+                            Thank you for your interest in Codingo!<br/>
+                            Our team will reach out to you very soon with all the details you need to get started on your coding journey 🚀<br/>
+                            <span className="block mt-2 text-lime-600">We can't wait to welcome you to our community!</span>
+                        </div>
+                    </div>
+                </div>
+            )}
         </section>
     );
 };

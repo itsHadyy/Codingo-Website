@@ -84,11 +84,11 @@ const PricingSection = () => {
                     our signature hands-on approach and expert instruction.
                 </p>
 
-                <div className="mt-12 flex flex-col items-center gap-8">
+                <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Starter Plan Card */}
                     <div
                         ref={el => plansRef.current[0] = el}
-                        className={`bg-white rounded-lg shadow-lg p-8 flex flex-col items-center border-t-8 border-lime-400 transform transition-all duration-300 hover:scale-105 w-full max-w-md mx-auto ${plansVisible[0] ? 'animate-zoomIn delay-200' : 'opacity-0'}`}>
+                        className={`bg-white rounded-lg shadow-lg p-8 flex flex-col items-center border-t-8 border-lime-400 transform transition-all duration-300 hover:scale-105 w-full max-w-md mx-auto md:max-w-none ${plansVisible[0] ? 'animate-zoomIn delay-200' : 'opacity-0'}`}>
                         <div className="text-center mb-6">
                             <h3 className="text-2xl font-semibold text-gray-700">Starter</h3>
                             <p className="text-gray-500 text-sm">Perfect for trying out coding</p>
@@ -119,7 +119,7 @@ const PricingSection = () => {
                     {/* Explorer Plan Card */}
                     <div
                         ref={el => plansRef.current[1] = el}
-                        className={`rounded-lg shadow-lg p-8 flex flex-col items-center bg-gradient-to-br from-indigo-500 to-purple-500 relative transform transition-all duration-300 hover:scale-105 w-full max-w-md mx-auto ${plansVisible[1] ? 'animate-zoomIn delay-300' : 'opacity-0'}`}>
+                        className={`rounded-lg shadow-lg p-8 flex flex-col items-center bg-gradient-to-br from-indigo-500 to-purple-500 relative transform transition-all duration-300 hover:scale-105 w-full max-w-md mx-auto md:max-w-none ${plansVisible[1] ? 'animate-zoomIn delay-300' : 'opacity-0'}`}>
                         <span className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-yellow-500 text-white text-xs font-bold px-3 py-1 rounded-full">⭐ MOST POPULAR</span>
                         <div className="text-center mb-6 mt-4">
                             <h3 className="text-2xl font-semibold text-white">Explorer</h3>
@@ -157,7 +157,7 @@ const PricingSection = () => {
                     {/* Innovator Plan Card */}
                     <div
                         ref={el => plansRef.current[2] = el}
-                        className={`rounded-lg shadow-lg p-8 flex flex-col items-center bg-gradient-to-br from-purple-500 to-pink-500 transform transition-all duration-300 hover:scale-105 w-full max-w-md mx-auto ${plansVisible[2] ? 'animate-zoomIn delay-400' : 'opacity-0'}`}>
+                        className={`rounded-lg shadow-lg p-8 flex flex-col items-center bg-gradient-to-br from-purple-500 to-pink-500 transform transition-all duration-300 hover:scale-105 w-full max-w-md mx-auto md:max-w-none ${plansVisible[2] ? 'animate-zoomIn delay-400' : 'opacity-0'}`}>
                         <div className="text-center mb-6">
                             <h3 className="text-2xl font-semibold text-white">Innovator</h3>
                             <p className="text-white text-opacity-90 text-sm">Comprehensive coding education</p>
